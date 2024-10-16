@@ -1,0 +1,80 @@
+
+
+username:tvs
+pass: jenkins@123
+
+
+
+
+Jenkins plugins: 
+1. docker pipeline
+2. sonarqube scanner
+3. jacoco
+4. rolebased 
+5. warnings plugin
+
+
+sudo wget -O /usr/share/keyrings/jenkins-keyring.asc \https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key
+  
+  
+echo "deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc]" \https://pkg.jenkins.io/debian-stable binary/ | sudo tee \/etc/apt/sources.list.d/jenkins.list > /dev/null
+
+Connect to SSH via VS Code:
+
+Host 44.193.220.167
+   HostName 44.193.220.167
+   IdentityFile C:\Users\sravya.tirumala.bond\Downloads\sravyanewppk
+   User ubuntu
+
+
+
+
+
+sudo apt-get update
+
+sudo apt-get install jenkins
+
+
+sudo apt update
+sudo apt install docker.io
+
+sudo apt install maven
+
+
+sudo su - 
+usermod -aG docker jenkins
+usermod -aG docker ubuntu
+systemctl restart docker
+
+
+
+Project:
+
+git clone https://github.com/iam-veeramalla/Jenkins-Zero-To-Hero/java-maven-sonar-argocd-helm-k8s/sprint-boot-app
+
+cd java-maven-sonar-argocd-helm-k8s/sprint-boot-app
+
+mvn clean package
+
+docker build -t ultimate-cicd-pipeline:v1 .
+
+docker run -d -p 8010:8080 -t ultimate-cicd-pipeline:v1
+8010  for mvn java 
+8000 for jenkins 
+9000 sonarqube
+
+
+apt install unzip
+adduser sonarqube
+wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-9.4.0.54424.zip
+unzip *
+chmod -R 755 /home/sonarqube/sonarqube-9.4.0.54424
+chown -R sonarqube:sonarqube /home/sonarqube/sonarqube-9.4.0.54424
+cd sonarqube-9.4.0.54424/bin/linux-x86-64/
+./sonar.sh start
+
+
+
+
+
+
